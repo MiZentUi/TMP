@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="LR1_2.Collections.CustomCollection&lt;T&gt;">
+    <Position X="10.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgIAIAAAAAAQBBAACACABAQAAAgAAAAEAACAAAABAAA=</HashCode>
+      <FileName>Collections\CustomCollection.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_head" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="LR1_2.Collections.CustomEnum&lt;T&gt;">
+    <Position X="7.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAACAABAAAAACAAAAAAAAAAAAAoAAAAAABAAA=</HashCode>
+      <FileName>Collections\CustomEnum.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="LR1_2.Entities.HousingService">
+    <Position X="10.5" Y="5.5" Width="1.5" />
+    <NestedTypes>
+      <Delegate Name="LR1_2.Entities.HousingService.ChangeHandler" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Entities\HousingService.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+      <Delegate Name="LR1_2.Entities.HousingService.ResidentHandler" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Entities\HousingService.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAIAAVAAAAQAAAQAAAgAQBAAAAADAAIAA=</HashCode>
+      <FileName>Entities\HousingService.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Field Name="_residents" />
+      <Field Name="_services" />
+    </ShowAsCollectionAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="LR1_2.Entities.Resident">
+    <Position X="13.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gQAAAAAAAAAAAAAUAAAAAAQAAAAAAAAAAAAAACAAAAA=</HashCode>
+      <FileName>Entities\Resident.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Field Name="_services" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="LR1_2.Entities.Service">
+    <Position X="16" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAQAAAAQAAAAAEAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Service.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Tariff" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="LR1_2.Entities.Tariff">
+    <Position X="18.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAAAAQAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Entities\Tariff.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LR1_2.Entities.Journal">
+    <Position X="7.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAEAAAAAAEAAA=</HashCode>
+      <FileName>Entities\Journal.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LR1_2.Collections.Node&lt;T&gt;">
+    <Position X="13.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAABAAAAAgAAAAAAAAAAA=</HashCode>
+      <FileName>Collections\Node.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
