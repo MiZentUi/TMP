@@ -1,0 +1,41 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:LR9_11.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="LR9_11.Views.MainWindow"
+        x:DataType="vm:MainViewModel"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="LR9_11">
+
+    <Design.DataContext>
+        <!-- This only sets the DataContext for the previewer in an IDE,
+        to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+        <vm:MainViewModel/>
+    </Design.DataContext>
+
+    <Window.Styles>
+        <StyleInclude Source="/Views/MainViewStyles.axaml"/>
+    </Window.Styles>
+
+    <SplitView IsPaneOpen="False"
+               DisplayMode="CompactOverlay"
+               OpenPaneLength="300"
+               CompactPaneLength="0"
+               x:Name="splitView"
+               Grid.Row="1">
+        <SplitView.Pane>
+            <StackPanel Orientation="Vertical" x:Name="buttonsPanel">
+                <Button Classes="menuItem" Content="Home" Command="{Binding GoHomeCommand}" Click="CloseMenu"/>
+                <Button Classes="menuItem" Content="Calculator" Command="{Binding GoCalculatorCommand}" Click="CloseMenu"/>
+            </StackPanel>
+        </SplitView.Pane>
+        <SplitView.Content>
+            <Grid ColumnDefinitions="*" RowDefinitions="50 *">
+                <Button Classes="menu" Grid.Row="0" Content="&#8801;" Click="Menu"/>
+                <ContentControl Grid.Row="1" Content="{Binding CurrentPage}"/>
+            </Grid>
+        </SplitView.Content>
+    </SplitView>
+</Window>

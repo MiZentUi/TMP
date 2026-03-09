@@ -1,0 +1,64 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="640"
+             x:Class="LR9_11.Views.CalculatorView">
+
+    <UserControl.Styles>
+        <StyleInclude Source="/Views/CalculatorViewStyles.axaml"/>
+    </UserControl.Styles>
+
+    <Grid ColumnDefinitions="*"
+          RowDefinitions="*,3*">
+        <Grid ColumnDefinitions="*"
+              RowDefinitions="*,2*,*"
+              Grid.Row="0">
+            <ScrollViewer Name="expressionScroll"
+                          VerticalScrollBarVisibility="Disabled"
+                          HorizontalScrollBarVisibility="Hidden">
+                <TextBlock Classes="expression"
+                           x:Name="expression"/>
+            </ScrollViewer>
+            <TextBlock Grid.Row="1"
+                       Classes="number"
+                       x:Name="numberField"
+                       Text="0"/>
+            <StackPanel Orientation="Horizontal" Grid.Row="2">
+                <Button Classes="memory" Content="MC" Click="MemoryHandler"/>
+                <Button Classes="memory" Content="MR" Click="MemoryHandler"/>
+                <Button Classes="memory" Content="M+" Click="MemoryHandler"/>
+                <Button Classes="memory" Content="M-" Click="MemoryHandler"/>
+                <Button Classes="memory" Content="MS" Click="MemoryHandler"/>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="1"
+              ColumnDefinitions="*,*,*,*"
+              RowDefinitions="*,*,*,*,*,*">
+            <Button Grid.Row="0" Grid.Column="0" Content="log(x)" Click="OperationHandler" Tag="log(x)"/>
+            <Button Grid.Row="0" Grid.Column="1" Content="CE" Click="ClearEntryHandler" Tag="%"/>
+            <Button Grid.Row="0" Grid.Column="2" Content="C" Click="ClearHandler"/>
+            <Button Grid.Row="0" Grid.Column="3" Content="⌫" Click="DeleteHandler"/>
+            <Button Grid.Row="1" Grid.Column="0" Content="¹/x" Click="OperationHandler" Tag="1/x"/>
+            <Button Grid.Row="1" Grid.Column="1" Content="x²" Click="OperationHandler" Tag="x^2"/>
+            <Button Grid.Row="1" Grid.Column="2" Content="√x" Click="OperationHandler" Tag="sqrt(x)"/>
+            <Button Grid.Row="1" Grid.Column="3" Content="÷" Click="OperationHandler" Tag="/"/>
+            <Button Grid.Row="2" Grid.Column="0" Content="7" Click="NumericHandler"/>
+            <Button Grid.Row="2" Grid.Column="1" Content="8" Click="NumericHandler"/>
+            <Button Grid.Row="2" Grid.Column="2" Content="9" Click="NumericHandler"/>
+            <Button Grid.Row="2" Grid.Column="3" Content="×" Click="OperationHandler" Tag="*"/>
+            <Button Grid.Row="3" Grid.Column="0" Content="4" Click="NumericHandler"/>
+            <Button Grid.Row="3" Grid.Column="1" Content="5" Click="NumericHandler"/>
+            <Button Grid.Row="3" Grid.Column="2" Content="6" Click="NumericHandler"/>
+            <Button Grid.Row="3" Grid.Column="3" Content="-" Click="OperationHandler" Tag="-"/>
+            <Button Grid.Row="4" Grid.Column="0" Content="1" Click="NumericHandler"/>
+            <Button Grid.Row="4" Grid.Column="1" Content="2" Click="NumericHandler"/>
+            <Button Grid.Row="4" Grid.Column="2" Content="3" Click="NumericHandler"/>
+            <Button Grid.Row="4" Grid.Column="3" Content="+" Click="OperationHandler" Tag="+"/>
+            <Button Grid.Row="5" Grid.Column="0" Content="⁺/₋" Click="OperationHandler" Tag="+/-"/>
+            <Button Grid.Row="5" Grid.Column="1" Content="0" Click="NumericHandler"/>
+            <Button Grid.Row="5" Grid.Column="2" Content="." Click="NumericHandler"/>
+            <Button Grid.Row="5" Grid.Column="3" Content="=" Click="ResultHandler" Background="LightGray"/>
+        </Grid>
+    </Grid>
+</UserControl>
