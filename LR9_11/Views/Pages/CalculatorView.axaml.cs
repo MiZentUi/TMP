@@ -1,4 +1,4 @@
-namespace LR9_11.Views;
+namespace LR9_11.Views.Pages;
 
 using System;
 using System.Collections.Generic;

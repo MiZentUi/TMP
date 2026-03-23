@@ -1,37 +1,46 @@
-using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
+using System.Collections;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Reactive;
+using LR9_11.ViewModels.Pages;
 using ReactiveUI;
 using ReactiveUI.SourceGenerators;
+using Splat;
 
 namespace LR9_11.ViewModels;
 
-public partial class MainViewModel : ViewModelBase, IScreen
+public partial class MainViewModel : ViewModelBase
 {
-    private readonly HomeViewModel _homePage;
-    private readonly CalculatorViewModel _calculatorPage;
+    [Reactive]
+    public partial ObservableCollection<PageViewModelBase> Pages { get; set; }
 
     [Reactive]
-    private ViewModelBase _currentPage;
+    public partial PageViewModelBase CurrentPage { get; set; }
 
-    public RoutingState Router => throw new System.NotImplementedException();
+    [Reactive]
+    public partial bool IsMenuOpen { get; set; }
 
-    public MainViewModel()
+    [Reactive]
+    public partial ReactiveCommand<Unit, Unit> HideMenuCommand { get; set; }
+
+    public MainViewModel(IEnumerable<PageViewModelBase>? pages = null)
     {
-        _homePage = new();
-        _calculatorPage = new();
+        Pages = [];
 
-        CurrentPage = _homePage;
+        foreach (var page in pages ?? Locator.Current.GetServices<PageViewModelBase>())
+        {
+            Pages.Add(page);
+        }
+
+        CurrentPage = Pages[0];
+        IsMenuOpen = false;
+
+        HideMenuCommand = ReactiveCommand.Create(HideMenu);
     }
 
-    [RelayCommand]
-    private void GoHome()
+    private void HideMenu()
     {
-        CurrentPage = _homePage;
-    }
-
-    [RelayCommand]
-    private void GoCalculator()
-    {
-        CurrentPage = _calculatorPage;
+        IsMenuOpen = false;
+        System.Console.WriteLine("Test");
     }
 }

@@ -1,8 +1,7 @@
 using Avalonia.Controls;
 using Avalonia.Interactivity;
-using Avalonia.ReactiveUI;
 using LR9_11.ViewModels;
-using ReactiveUI;
+using ReactiveUI.Avalonia;
 using Splat;
 
 namespace LR9_11.Views;
@@ -13,7 +12,7 @@ public partial class MainWindow : ReactiveWindow<MainViewModel>
     {
         InitializeComponent();
 
-        ViewModel = AppLocator.Current.GetService<MainViewModel>() ?? new MainViewModel();
+        ViewModel = Locator.Current.GetService<MainViewModel>();
     }
 
     private void Menu(object sender, RoutedEventArgs args)
@@ -21,7 +20,7 @@ public partial class MainWindow : ReactiveWindow<MainViewModel>
         splitView.IsPaneOpen = !splitView.IsPaneOpen;
     }
 
-    private void CloseMenu(object sender, RoutedEventArgs args)
+    private void CloseMenu(object sender, SelectionChangedEventArgs args)
     {
         splitView.IsPaneOpen = false;
     }

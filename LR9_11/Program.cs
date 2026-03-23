@@ -1,10 +1,10 @@
 ﻿using Avalonia;
-using LR9_11.ViewModels;
-using ReactiveUI;
-using ReactiveUI.Avalonia;
 using System;
+using Splat;
+using ReactiveUI.Avalonia;
 using System.Reflection;
-using Avalonia.ReactiveUI;
+using LR9_11.ViewModels;
+using LR9_11.ViewModels.Pages;
 
 namespace LR9_11;
 
@@ -14,8 +14,9 @@ sealed class Program
     // SynchronizationContext-reliant code before AppMain is called: things aren't initialized
     // yet and stuff might break.
     [STAThread]
-    public static void Main(string[] args) => BuildAvaloniaApp()
-        .StartWithClassicDesktopLifetime(args);
+    public static void Main(string[] args) =>
+        BuildAvaloniaApp()
+            .StartWithClassicDesktopLifetime(args);
 
     // Avalonia configuration, don't remove; also used by visual designer.
     public static AppBuilder BuildAvaloniaApp()
@@ -27,12 +28,14 @@ sealed class Program
             {
                 // Enable ReactiveUI
                 rxAppBuilder
-                  .WithViewsFromAssembly(Assembly.GetExecutingAssembly())
-                  .WithRegistration(locator =>
-                  {
-                      // Register your services here
-                      locator.RegisterLazySingleton<IScreen>(() => new MainViewModel());
-                      //   locator.RegisterLazySingleton<INavigationService>(() => new NavigationService());
-                  });
+                    .WithViewsFromAssembly(Assembly.GetExecutingAssembly())
+                    .WithRegistration(locator =>
+                    {
+                        // Register your services here
+                        locator.RegisterLazySingleton<PageViewModelBase>(() => new HomeViewModel());
+                        locator.RegisterLazySingleton<PageViewModelBase>(() => new CalculatorViewModel());
+                        locator.RegisterLazySingleton<PageViewModelBase>(() => new ProgressViewModel());
+                        locator.RegisterLazySingleton(() => new MainViewModel(Locator.Current.GetServices<PageViewModelBase>()));
+                    });
             }).RegisterReactiveUIViewsFromEntryAssembly();
 }

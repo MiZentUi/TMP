@@ -36,6 +36,10 @@
         <Setter Property="Background" Value="#bbbbbb"/>
         <Setter Property="Foreground" Value="Black"/>
     </Style>
+    <Style Selector="ListBoxItem:pointerover /template/ ContentPresenter">
+        <Setter Property="Background" Value="#bbbbbb"/>
+        <Setter Property="Foreground" Value="Black"/>
+    </Style>
     <Style Selector="FlyoutPresenter">
         <Setter Property="Background" Value="#eeeeee"/>
         <Setter Property="Padding" Value="0"/>

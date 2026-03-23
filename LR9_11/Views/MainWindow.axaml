@@ -16,24 +16,48 @@
     </Design.DataContext>
 
     <Window.Styles>
-        <StyleInclude Source="/Views/MainViewStyles.axaml"/>
+        <StyleInclude Source="/Views/Styles/MainViewStyles.axaml"/>
     </Window.Styles>
 
-    <SplitView IsPaneOpen="False"
+    <SplitView IsPaneOpen="{Binding IsMenuOpen}"
                DisplayMode="CompactOverlay"
                OpenPaneLength="300"
                CompactPaneLength="0"
                x:Name="splitView"
                Grid.Row="1">
         <SplitView.Pane>
-            <StackPanel Orientation="Vertical" x:Name="buttonsPanel">
-                <Button Classes="menuItem" Content="Home" Command="{Binding GoHomeCommand}" Click="CloseMenu"/>
-                <Button Classes="menuItem" Content="Calculator" Command="{Binding GoCalculatorCommand}" Click="CloseMenu"/>
-            </StackPanel>
+            <DockPanel>
+                <ListBox ItemsSource="{Binding Pages}"
+                         SelectedItem="{Binding CurrentPage}"
+                         SelectionMode="Single"
+                         Background="LightGray"
+                         Foreground="Black"
+                         SelectionChanged="CloseMenu">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <TextBlock Text="{Binding Title}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </DockPanel>
         </SplitView.Pane>
         <SplitView.Content>
             <Grid ColumnDefinitions="*" RowDefinitions="50 *">
-                <Button Classes="menu" Grid.Row="0" Content="&#8801;" Click="Menu"/>
+                <DockPanel Grid.Row="0">
+                    <Button DockPanel.Dock="Left"
+                            Classes="menu"
+                            Content="&#8801;"
+                            Click="Menu"/>
+                    <TextBlock HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               Foreground="Black"
+                               FontSize="25"
+                               Margin="0,0,50,0"
+                               Text="{Binding CurrentPage.Title}"/>
+
+                </DockPanel>
                 <ContentControl Grid.Row="1" Content="{Binding CurrentPage}"/>
             </Grid>
         </SplitView.Content>

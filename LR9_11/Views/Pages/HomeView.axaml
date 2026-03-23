@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="640"
              Foreground="Black"
-             x:Class="LR9_11.Views.HomeView">
-    Welcome to home page!
+             x:Class="LR9_11.Views.Pages.HomeView">
+    <TextBlock HorizontalAlignment="Center"
+               Text="Welcome to home page!"/>
 </UserControl>

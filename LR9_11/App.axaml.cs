@@ -1,11 +1,11 @@
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
-using Avalonia.Data.Core;
 using Avalonia.Data.Core.Plugins;
 using System.Linq;
 using Avalonia.Markup.Xaml;
 using LR9_11.ViewModels;
 using LR9_11.Views;
+using Splat;
 
 namespace LR9_11;
 
@@ -18,6 +18,9 @@ public partial class App : Application
 
     public override void OnFrameworkInitializationCompleted()
     {
+        var locator = new ViewLocator();
+        DataTemplates.Add(locator);
+
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
             // Avoid duplicate validations from both Avalonia and the CommunityToolkit. 
@@ -25,9 +28,10 @@ public partial class App : Application
             DisableAvaloniaDataAnnotationValidation();
             desktop.MainWindow = new MainWindow
             {
-                DataContext = new MainViewModel(),
+                DataContext = Locator.Current.GetService<MainViewModel>(),
             };
         }
+
 
         base.OnFrameworkInitializationCompleted();
     }
