@@ -31,11 +31,16 @@ sealed class Program
                     .WithViewsFromAssembly(Assembly.GetExecutingAssembly())
                     .WithRegistration(locator =>
                     {
+                        var resolver = Locator.Current;
+
                         // Register your services here
+                        locator.Register<IDbService, SQLiteService>();
+
                         locator.RegisterLazySingleton<PageViewModelBase>(() => new HomeViewModel());
                         locator.RegisterLazySingleton<PageViewModelBase>(() => new CalculatorViewModel());
                         locator.RegisterLazySingleton<PageViewModelBase>(() => new ProgressViewModel());
-                        locator.RegisterLazySingleton(() => new MainViewModel(Locator.Current.GetServices<PageViewModelBase>()));
+                        locator.RegisterLazySingleton<PageViewModelBase>(() => new PubViewModel(resolver.GetService<IDbService>()));
+                        locator.RegisterLazySingleton(() => new MainViewModel(resolver.GetServices<PageViewModelBase>()));
                     });
             }).RegisterReactiveUIViewsFromEntryAssembly();
 }
