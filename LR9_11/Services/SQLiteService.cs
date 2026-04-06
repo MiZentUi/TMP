@@ -150,7 +150,7 @@ public class SQLiteService : IDbService
                 new()
                 {
                     Name = "Grape Fanta",
-                    Strength = 45
+                    Strength = 0
                 }
             ]
         );

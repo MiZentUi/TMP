@@ -5,6 +5,7 @@ using ReactiveUI.Avalonia;
 using System.Reflection;
 using LR9_11.ViewModels;
 using LR9_11.ViewModels.Pages;
+using System.Net.Http;
 
 namespace LR9_11;
 
@@ -33,13 +34,17 @@ sealed class Program
                     {
                         var resolver = Locator.Current;
 
+                        locator.RegisterLazySingleton(() => new HttpClient());
+
                         // Register your services here
                         locator.Register<IDbService, SQLiteService>();
+                        locator.Register<IRateService>(() => new RateService(resolver.GetService<HttpClient>()));
 
                         locator.RegisterLazySingleton<PageViewModelBase>(() => new HomeViewModel());
                         locator.RegisterLazySingleton<PageViewModelBase>(() => new CalculatorViewModel());
                         locator.RegisterLazySingleton<PageViewModelBase>(() => new ProgressViewModel());
                         locator.RegisterLazySingleton<PageViewModelBase>(() => new PubViewModel(resolver.GetService<IDbService>()));
+                        locator.RegisterLazySingleton<PageViewModelBase>(() => new CurrencyConverterViewModel(resolver.GetService<IRateService>()));
                         locator.RegisterLazySingleton(() => new MainViewModel(resolver.GetServices<PageViewModelBase>()));
                     });
             }).RegisterReactiveUIViewsFromEntryAssembly();

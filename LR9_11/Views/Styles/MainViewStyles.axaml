@@ -3,9 +3,6 @@
     <Style Selector="Window">
         <Setter Property="Background" Value="#eeeeee"/>
     </Style>
-    <Style Selector="Grid">
-        <Setter Property="Margin" Value="3"/>
-    </Style>
     <Style Selector="Button.menu">
         <Setter Property="Width" Value="50"/>
         <Setter Property="HorizontalAlignment" Value="Left"/>

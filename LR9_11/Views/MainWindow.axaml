@@ -56,9 +56,10 @@
                                FontSize="25"
                                Margin="0,0,50,0"
                                Text="{Binding CurrentPage.Title}"/>
-
                 </DockPanel>
-                <ContentControl Grid.Row="1" Content="{Binding CurrentPage}"/>
+                <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+                    <ContentControl Margin="10" Content="{Binding CurrentPage}"/>
+                </ScrollViewer>
             </Grid>
         </SplitView.Content>
     </SplitView>
