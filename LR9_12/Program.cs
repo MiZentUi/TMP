@@ -3,11 +3,11 @@ using System;
 using Splat;
 using ReactiveUI.Avalonia;
 using System.Reflection;
-using LR9_11.ViewModels;
-using LR9_11.ViewModels.Pages;
+using LR9_12.ViewModels;
+using LR9_12.ViewModels.Pages;
 using System.Net.Http;
 
-namespace LR9_11;
+namespace LR9_12;
 
 sealed class Program
 {

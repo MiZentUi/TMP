@@ -1,10 +1,10 @@
 using Avalonia.Controls;
 using Avalonia.Interactivity;
-using LR9_11.ViewModels;
+using LR9_12.ViewModels;
 using ReactiveUI.Avalonia;
 using Splat;
 
-namespace LR9_11.Views;
+namespace LR9_12.Views;
 
 public partial class MainWindow : ReactiveWindow<MainViewModel>
 {

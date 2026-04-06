@@ -3,7 +3,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="640"
-             x:Class="LR9_11.Views.Pages.CalculatorView">
+             x:Class="LR9_12.Views.Pages.CalculatorView">
 
     <UserControl.Styles>
         <StyleInclude Source="/Views/Styles/CalculatorViewStyles.axaml"/>

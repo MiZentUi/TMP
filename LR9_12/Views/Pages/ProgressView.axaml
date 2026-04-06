@@ -1,11 +1,11 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:vm="using:LR9_11.ViewModels.Pages"
+             xmlns:vm="using:LR9_12.ViewModels.Pages"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:DataType="vm:ProgressViewModel"
-             x:Class="LR9_11.Views.Pages.ProgressView">
+             x:Class="LR9_12.Views.Pages.ProgressView">
 
     <DockPanel>
         <TextBlock Text="{Binding Status}"

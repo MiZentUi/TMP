@@ -1,4 +1,4 @@
-namespace LR9_11.ViewModels.Pages;
+namespace LR9_12.ViewModels.Pages;
 
 public abstract class PageViewModelBase : ViewModelBase
 {

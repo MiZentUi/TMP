@@ -1,7 +1,7 @@
 <Application xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             x:Class="LR9_11.App"
-             xmlns:local="using:LR9_11"
+             x:Class="LR9_12.App"
+             xmlns:local="using:LR9_12"
              RequestedThemeVariant="Default">
     <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
 
@@ -13,6 +13,6 @@
         <FluentTheme />
     </Application.Styles>
     <Application.Resources>
-        <FontFamily x:Key="JetBrainsMono">avares://LR9_11/Assets/Fonts#JetBrains Mono Medium</FontFamily>
+        <FontFamily x:Key="JetBrainsMono">avares://LR9_12/Assets/Fonts#JetBrains Mono Medium</FontFamily>
     </Application.Resources>
 </Application>

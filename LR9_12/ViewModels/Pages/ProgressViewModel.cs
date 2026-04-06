@@ -6,7 +6,7 @@ using Avalonia.Threading;
 using ReactiveUI;
 using ReactiveUI.SourceGenerators;
 
-namespace LR9_11.ViewModels.Pages;
+namespace LR9_12.ViewModels.Pages;
 
 public partial class ProgressViewModel : PageViewModelBase
 {

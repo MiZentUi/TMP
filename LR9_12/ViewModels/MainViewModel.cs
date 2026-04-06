@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Reactive;
-using LR9_11.ViewModels.Pages;
+using LR9_12.ViewModels.Pages;
 using ReactiveUI;
 using ReactiveUI.SourceGenerators;
 using Splat;
 
-namespace LR9_11.ViewModels;
+namespace LR9_12.ViewModels;
 
 public partial class MainViewModel : ViewModelBase
 {

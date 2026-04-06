@@ -3,11 +3,11 @@ using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Data.Core.Plugins;
 using System.Linq;
 using Avalonia.Markup.Xaml;
-using LR9_11.ViewModels;
-using LR9_11.Views;
+using LR9_12.ViewModels;
+using LR9_12.Views;
 using Splat;
 
-namespace LR9_11;
+namespace LR9_12;
 
 public partial class App : Application
 {

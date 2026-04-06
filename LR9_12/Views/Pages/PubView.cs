@@ -1,6 +1,6 @@
 using Avalonia.Controls;
 
-namespace LR9_11.Views.Pages;
+namespace LR9_12.Views.Pages;
 
 public partial class PubView : UserControl
 {

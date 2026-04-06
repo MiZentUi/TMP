@@ -7,7 +7,7 @@ using DynamicData.Binding;
 using System.Reactive.Linq;
 using System.Reactive;
 
-namespace LR9_11.ViewModels.Pages;
+namespace LR9_12.ViewModels.Pages;
 
 public partial class PubViewModel : PageViewModelBase
 {

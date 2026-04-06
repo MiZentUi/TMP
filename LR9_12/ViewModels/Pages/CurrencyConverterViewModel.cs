@@ -8,7 +8,7 @@ using ReactiveUI;
 using ReactiveUI.SourceGenerators;
 using Splat;
 
-namespace LR9_11.ViewModels.Pages;
+namespace LR9_12.ViewModels.Pages;
 
 public partial class CurrencyConverterViewModel : PageViewModelBase
 {

@@ -1,6 +1,6 @@
 ﻿using ReactiveUI;
 
-namespace LR9_11.ViewModels;
+namespace LR9_12.ViewModels;
 
 public abstract class ViewModelBase : ReactiveObject
 {
