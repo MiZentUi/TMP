@@ -1,0 +1,50 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:LR13_14.UI.ViewModels.Pages.Routes"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:i="clr-namespace:Avalonia.Xaml.Interactivity;assembly=Avalonia.Xaml.Interactivity"
+             xmlns:ia="clr-namespace:Avalonia.Xaml.Interactions.Core;assembly=Avalonia.Xaml.Interactions"
+             mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="1200"
+             x:DataType="vm:AddServiceViewModel"
+             x:Class="LR13_14.UI.Views.Pages.Routes.AddServiceView"
+             Name="UserControl">
+
+    <UserControl.Styles>
+        <Style Selector="TextBox">
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+        <Style Selector="TextBlock">
+            <Setter Property="Margin" Value="10 5"/>
+        </Style>
+    </UserControl.Styles>
+
+    <StackPanel>
+        <Button Command="{Binding SelectImageCommand}">
+            <Image Margin="10" Stretch="UniformToFill" Source="{Binding ImageBitmap}"></Image>
+        </Button>
+        <TextBlock>Name:</TextBlock>
+        <TextBox Text="{Binding Name}" HorizontalAlignment="Stretch"/>
+        <TextBlock>Begin date:</TextBlock>
+        <TimePicker ClockIdentifier="24HourClock" SelectedTime="{Binding Begin}" HorizontalAlignment="Stretch"/>
+        <TextBlock>Duration:</TextBlock>
+        <TimePicker ClockIdentifier="24HourClock" SelectedTime="{Binding Duration}" HorizontalAlignment="Stretch"/>
+        <TextBlock>Cost:</TextBlock>
+        <NumericUpDown Value="{Binding Cost}" Minimum="0" HorizontalAlignment="Stretch" Margin="5"/>
+        <Button Margin="5,10"
+                CornerRadius="10"
+                BorderBrush="Black"
+                BorderThickness="1"
+                Padding="5"
+                Command="{Binding AddServiceCommand}"
+                CommandParameter="{Binding}"
+                Background="{Binding ButtonBrush}">
+            <Button.Styles>
+                <Style Selector="Button:pointerover /template/ ContentPresenter">
+                    <Setter Property="BorderBrush" Value="{Binding $parent[Button].BorderBrush}" />
+                </Style>
+            </Button.Styles>
+            <TextBlock Text="Save"/>
+        </Button>
+    </StackPanel>
+</UserControl>

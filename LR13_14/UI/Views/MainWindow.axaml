@@ -1,0 +1,117 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:LR13_14.UI.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i="clr-namespace:Avalonia.Xaml.Interactivity;assembly=Avalonia.Xaml.Interactivity"
+        xmlns:ia="clr-namespace:Avalonia.Xaml.Interactions.Core;assembly=Avalonia.Xaml.Interactions"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="LR13_14.UI.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Title="LR13_14">
+
+    <Design.DataContext>
+        <!-- This only sets the DataContext for the previewer in an IDE,
+        to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+
+    <Window.Styles>
+        <Style Selector="Button.menu">
+            <Setter Property="Width" Value="50"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="FontSize" Value="25"/>
+        </Style>
+        <Style Selector="Button">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="VerticalAlignment" Value="Stretch"/>
+            <Setter Property="Margin" Value="2"/>
+            <Setter Property="CornerRadius" Value="3"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="BorderBrush" Value="#cccccc"/>
+            <Setter Property="BorderThickness" Value="0"/>
+        </Style>
+        <Style Selector="SplitView">
+            <Setter Property="PaneBackground" Value="#dddddd"/>
+        </Style>
+        <Style Selector="Button.menuItem">
+            <Setter Property="Background" Value="#dddddd"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Margin" Value="0"/>
+            <Setter Property="CornerRadius" Value="0"/>
+        </Style>
+        <Style Selector="Button:pointerover /template/ ContentPresenter">
+            <Setter Property="Background" Value="#bbbbbb"/>
+            <Setter Property="Foreground" Value="Black"/>
+        </Style>
+        <Style Selector="ListBoxItem:pointerover /template/ ContentPresenter">
+            <Setter Property="Background" Value="#bbbbbb"/>
+            <Setter Property="Foreground" Value="Black"/>
+        </Style>
+        <Style Selector="FlyoutPresenter">
+            <Setter Property="Background" Value="#eeeeee"/>
+            <Setter Property="Padding" Value="0"/>
+        </Style>
+    </Window.Styles>
+
+    <SplitView IsPaneOpen="{Binding IsMenuOpen, Mode=TwoWay}"
+               DisplayMode="CompactOverlay"
+               OpenPaneLength="300"
+               CompactPaneLength="0"
+               x:Name="splitView"
+               Grid.Row="1">
+        <SplitView.Pane>
+            <DockPanel>
+                <ListBox ItemsSource="{Binding Pages}"
+                         SelectedItem="{Binding SelectedPage}"
+                         SelectionMode="Single"
+                         Background="LightGray"
+                         Foreground="Black">
+                    <i:Interaction.Behaviors>
+                        <ia:EventTriggerBehavior EventName="SelectionChanged">
+                            <ia:InvokeCommandAction Command="{Binding PageChangedCommand}" />
+                        </ia:EventTriggerBehavior>
+                    </i:Interaction.Behaviors>
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <TextBlock FontFamily="JetBrainsMono">
+                                    <TextBlock.Text>
+                                        <MultiBinding StringFormat="{}{0}  {1}">
+                                            <Binding Path="Icon" />
+                                            <Binding Path="Title" />
+                                        </MultiBinding>
+                                    </TextBlock.Text>
+                                </TextBlock>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </DockPanel>
+        </SplitView.Pane>
+        <SplitView.Content>
+            <Grid ColumnDefinitions="*" RowDefinitions="50 *">
+                <DockPanel Grid.Row="0">
+                    <Button DockPanel.Dock="Left"
+                            Classes="menu"
+                            Content="{Binding ButtonText}"
+                            Command="{Binding NavigationCommand}"/>
+                    <TextBlock HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               Foreground="Black"
+                               FontSize="25"
+                               Margin="0,0,50,0"
+                               Text="{Binding CurrentPage.Title}"/>
+                </DockPanel>
+                <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+                    <ContentControl Margin="10" Content="{Binding CurrentPage}"/>
+                </ScrollViewer>
+            </Grid>
+        </SplitView.Content>
+    </SplitView>
+
+</Window>
